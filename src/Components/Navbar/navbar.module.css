@@ -1,0 +1,42 @@
+
+    /*--font-size-sm: clamp(12.8px, 0.07vw + 12.53px, 14.25px);*/
+    /*--font-size-base: clamp(16px, 0.14vw + 15.44px, 19px);*/
+    /*--font-size-md: clamp(20px, 0.25vw + 19.01px, 25.33px);*/
+    /*--font-size-lg: clamp(25px, 0.41vw + 23.38px, 33.76px);*/
+    /*--font-size-xl: clamp(31.25px, 0.64vw + 28.7px, 45px);*/
+    /*--font-size-xxl: clamp(39.06px, 0.97vw + 35.19px, 59.99px);*/
+    /*--font-size-xxxl: clamp(48.83px, 1.44vw + 43.06px, 79.97px);*/
+
+
+.nav_container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding-bottom: 30px;
+}
+
+.logo {
+    font-size: clamp(31.25px, 0.64vw + 28.7px, 45px);
+}
+
+.nav_links {
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    font-size: clamp(16px, 0.14vw + 15.44px, 19px);
+}
+
+.link {
+    text-decoration: none;
+    color: white;
+    font-weight: 400;
+}
+
+.active_link {
+    font-weight: 600;
+    color: #829BDC;
+    text-decoration: none;
+}
