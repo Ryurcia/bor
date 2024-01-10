@@ -10,7 +10,7 @@ const Navbar = () => {
 
   return(
     <nav className={`${styles.nav_container} ${clashDisplay.className}`}>
-      <h1 className={styles.logo}>Book of Ryu</h1>
+      <Link href="/" className={`${clashDisplay.className} ${styles.logo}`}>Book of Ryu</Link>
       <div className={styles.nav_links}>
         <Link href="/personal" className={pathname === '/personal' ? `${styles.active_link}` : `${styles.link}` } >personal</Link>
         <Link href="/dev" className={pathname === '/dev' ? `${styles.active_link}` : `${styles.link}` } >dev</Link>

@@ -1,0 +1,25 @@
+.home_container {
+    width: 90%;
+    height: 100vh;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    grid-template-rows: repeat(6,1fr);
+}
+
+.header_img {
+    background-color: #829BDC;
+    grid-column: span 3;
+    grid-row: span 2;
+    border-radius: 5px;
+}
+
+.header_blog_container {
+    grid-column: span 3;
+}
+
+.header_blog_title {
+    margin-top: 10px;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
