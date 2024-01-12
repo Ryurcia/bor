@@ -4,7 +4,6 @@ import './globals.css'
 import Navbar from "@/Components/Navbar/navbar";
 
 
-
 export const metadata: Metadata = {
   title: 'Book of Ryu',
   description: "A collection of Ryle's thoughts and a log of stuff he learned",
@@ -19,7 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={archivo.className}>
       <Navbar />
-      {children}
+        {children}
       </body>
     </html>
   )
