@@ -5,6 +5,7 @@ interface IBlogData {
   blog_author: string
   blog_posted: string
   blog_tag:string
+  blog_content?: any
 }
 
 

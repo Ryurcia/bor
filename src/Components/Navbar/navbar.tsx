@@ -1,5 +1,5 @@
 'use client'
-import {clashDisplay} from "@/Fonts";
+import {clashDisplay} from "@/Utils/fonts/fonts";
 import styles from './navbar.module.css';
 import Link from "next/link";
 import {usePathname} from "next/navigation";

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import {archivo} from "@/Fonts";
+import {archivo} from "@/Utils/fonts/fonts";
 import './globals.css'
 import Navbar from "@/Components/Navbar/navbar";
 
