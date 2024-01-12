@@ -1,4 +1,13 @@
 .home_container {
     width: 90%;
+    display: flex;
+    flex-direction: column;
     margin: auto;
+}
+
+@media screen and (min-width: 2560px){
+
+    .home_container {
+        width: 60%;
+    }
 }
