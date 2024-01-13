@@ -7,7 +7,7 @@ interface HeaderProps {
   blog_id:string
   image_url:string,
   title: string,
-  author:string
+  author:string | undefined
   content: any
 }
 
