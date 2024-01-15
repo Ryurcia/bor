@@ -19,6 +19,7 @@ export default function RootLayout({
       <body className={archivo.className}>
       <Navbar />
         {children}
+      <footer>Book of Ryu | 2024</footer>
       </body>
     </html>
   )

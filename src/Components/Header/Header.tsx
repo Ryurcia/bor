@@ -15,7 +15,7 @@ const Header = (props: HeaderProps) => {
   return (
     <div className={styles.header_container}>
       <div className={styles.header_image_container}>
-        <Image className={styles.header_img} src={props.image_url} alt="image" fill/>
+        <Image className={styles.header_img} src={props.image_url} alt="image" fill sizes="(max-width:768px)50vw,(max-width:1100px)75vw,100vw" priority={true}/>
       </div>
       <div className={styles.header_title_container}>
         <h1 className={clashDisplay.className}>{props.title}</h1>
