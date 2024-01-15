@@ -1,13 +1,13 @@
 import styles from './page.module.css'
-import {_ContetnfulAPI} from "@/Contentful/contentfulAPI";
+import {_ContentfulAPI} from "@/Contentful/contentfulAPI";
 import IBlogData from "@/Interfaces";
 import Header from "@/Components/Header/Header";
 import BlogCard from "@/Components/Card/BlogCard";
 import Image from "next/image";
 export default async function Home() {
 
-  const blog:IBlogData = await _ContetnfulAPI.getRecentEntry();
-  const blogs:IBlogData[] = await _ContetnfulAPI.getEntires(3);
+  const blog:IBlogData = await _ContentfulAPI.getRecentEntry();
+  const blogs:IBlogData[] = await _ContentfulAPI.getEntries(3);
 
   return (
     <div className={styles.home_container}>

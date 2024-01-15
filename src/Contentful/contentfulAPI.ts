@@ -2,17 +2,18 @@ import {client} from "@/Contentful/contentfulConfig";
 import imageLinkResolver from "@/Helpers/imageLinkResolver";
 import IBlogData from "@/Interfaces";
 import {documentToReactComponents} from "@contentful/rich-text-react-renderer";
+import BlogTag from "@/Types";
 
-class ContenfulAPI {
+class ContentfulAPI {
 
-  private static instance: ContenfulAPI;
+  private static instance: ContentfulAPI;
 
-  public static getInstance(): ContenfulAPI {
-    if(!ContenfulAPI.instance) {
-      ContenfulAPI.instance = new ContenfulAPI();
+  public static getInstance(): ContentfulAPI {
+    if(!ContentfulAPI.instance) {
+      ContentfulAPI.instance = new ContentfulAPI();
     }
 
-    return ContenfulAPI.instance
+    return ContentfulAPI.instance
   }
 
   public async getRecentEntry(): Promise<IBlogData> {
@@ -49,7 +50,7 @@ class ContenfulAPI {
     }
   }
 
-  public async getEntires(limit?: number): Promise<Array<IBlogData>> {
+  public async getEntries(limit: number | undefined): Promise<Array<IBlogData>> {
     const BlogArray: Array<IBlogData> = [];
 
     const blogs = await client.getEntries({
@@ -57,14 +58,15 @@ class ContenfulAPI {
     });
 
     blogs.items.forEach((entry:any) => {
+      const fields = entry.fields;
       BlogArray.push({
         blog_id: entry.sys.id,
-        blog_header_img: imageLinkResolver(entry.fields.headerImage.fields.file.url),
-        blog_title: entry.fields.blogTitle,
-        blog_author: entry.fields.author,
-        blog_posted: entry.fields.datePosted,
-        blog_tag:entry.fields.tag,
-        blog_content: documentToReactComponents(entry.fields.content)
+        blog_header_img: imageLinkResolver(fields.headerImage.fields.file.url),
+        blog_title: fields.blogTitle,
+        blog_author: fields.author,
+        blog_posted: fields.datePosted,
+        blog_tag:fields.tag,
+        blog_content: documentToReactComponents(fields.content)
       })
     })
 
@@ -72,7 +74,26 @@ class ContenfulAPI {
 
   }
 
+  public async getEntriesByTag(tag:BlogTag): Promise<any> {
+    const blogs = await client.getEntries();
+    const entries: Array<IBlogData> = blogs.items.map((entry:any) => {
+      const fields = entry.fields;
+      if(fields.tag === tag) {
+        return {
+          blog_id: entry.sys.id,
+          blog_header_img: imageLinkResolver(fields.headerImage.fields.file.url),
+          blog_title: fields.blogTitle,
+          blog_author: fields.author,
+          blog_posted: fields.datePosted,
+          blog_tag:fields.tag,
+          blog_content: documentToReactComponents(fields.content)
+        }
+      }
+    })
+    return entries
+  }
+
 }
 
-export const _ContetnfulAPI:ContenfulAPI = ContenfulAPI.getInstance();
-Object.freeze(_ContetnfulAPI);
+export const _ContentfulAPI:ContentfulAPI = ContentfulAPI.getInstance();
+Object.freeze(_ContentfulAPI);
