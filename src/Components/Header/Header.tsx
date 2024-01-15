@@ -19,7 +19,6 @@ const Header = (props: HeaderProps) => {
       </div>
       <div className={styles.header_title_container}>
         <h1 className={clashDisplay.className}>{props.title}</h1>
-        <div className={styles.header_content}>{props.content}</div>
         <span className={`${styles.header_author} ${archivo.className}`}>Written by {props.author}</span>
       </div>
     </div>

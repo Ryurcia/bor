@@ -36,11 +36,6 @@
     text-overflow: ellipsis;
 }
 
-.header_content > p {
-    height: 50px;
-    overflow: clip;
-    text-overflow: ellipsis;
-}
 
 .header_author {
     color: #829bdc;

@@ -74,23 +74,21 @@ class ContentfulAPI {
 
   }
 
-  public async getEntriesByTag(tag:BlogTag): Promise<any> {
+  public async getEntriesByTag(tag:BlogTag): Promise<Array<IBlogData>> {
     const blogs = await client.getEntries();
-    const entries: Array<IBlogData> = blogs.items.map((entry:any) => {
+    const filteredBlogs = blogs.items.filter((entry:any) => entry.fields.tag === tag)
+
+    return filteredBlogs.map((entry:any) => {
       const fields = entry.fields;
-      if(fields.tag === tag) {
-        return {
-          blog_id: entry.sys.id,
-          blog_header_img: imageLinkResolver(fields.headerImage.fields.file.url),
-          blog_title: fields.blogTitle,
-          blog_author: fields.author,
-          blog_posted: fields.datePosted,
-          blog_tag:fields.tag,
-          blog_content: documentToReactComponents(fields.content)
-        }
+      return {
+        blog_id: entry.sys.id,
+        blog_header_img: imageLinkResolver(fields.headerImage.fields.file.url),
+        blog_title: fields.blogTitle,
+        blog_author: fields.author,
+        blog_posted: fields.datePosted,
+        blog_tag:fields.tag,
       }
     })
-    return entries
   }
 
 }

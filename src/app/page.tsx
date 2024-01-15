@@ -3,7 +3,7 @@ import {_ContentfulAPI} from "@/Contentful/contentfulAPI";
 import IBlogData from "@/Interfaces";
 import Header from "@/Components/Header/Header";
 import BlogCard from "@/Components/Card/BlogCard";
-import Image from "next/image";
+
 export default async function Home() {
 
   const blog:IBlogData = await _ContentfulAPI.getRecentEntry();
