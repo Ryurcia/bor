@@ -18,7 +18,7 @@ class ContentfulAPI {
 
   public async getRecentEntry(): Promise<IBlogData> {
     const blog = await client.getEntries({
-      order:'sys.createdAt',
+      order:'-sys.createdAt',
       limit: 1
     });
     const fields = blog.items[0]
@@ -30,7 +30,6 @@ class ContentfulAPI {
       blog_author: fields.fields.author,
       blog_posted: fields.fields.datePosted,
       blog_tag:fields.fields.tag,
-      blog_content: documentToReactComponents(fields.fields.content)
     };
   }
 
@@ -46,7 +45,7 @@ class ContentfulAPI {
       blog_author: fields.author,
       blog_posted: fields.datePosted,
       blog_tag:fields.tag,
-      blog_content: documentToReactComponents(fields.content)
+      blog_content: documentToReactComponents(fields.content,{preserveWhitespace: true})
     }
   }
 
@@ -68,7 +67,6 @@ class ContentfulAPI {
         blog_author: fields.author,
         blog_posted: fields.datePosted,
         blog_tag:fields.tag,
-        blog_content: documentToReactComponents(fields.content)
       }
     })
 

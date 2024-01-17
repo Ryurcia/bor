@@ -1,0 +1,50 @@
+.content_container {
+    position: relative;
+    width: 90%;
+    margin-inline: auto;
+    padding-bottom: 30px;
+}
+
+.content_img {
+    position: relative;
+    width: 100%;
+    height: 40vh;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.img {
+    position: absolute;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.content_heading {
+    margin-bottom: 30px;
+}
+
+.content_heading > h1 {
+    font-size: clamp(31.25px, 0.64vw + 28.7px, 45px);
+}
+
+.content_heading > h4 {
+    opacity: 50%;
+}
+
+.content {
+    font-size: clamp(16px, 0.14vw + 15.44px, 19px);
+}
+
+@media  screen and (min-width: 1500px) {
+    .content_container {
+        width: 80%;
+    }
+
+}
+
+@media  screen and (min-width: 2000px) {
+    .content_container {
+        width: 60%;
+    }
+
+}
