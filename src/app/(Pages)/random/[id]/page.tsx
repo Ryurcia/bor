@@ -1,6 +1,6 @@
 import {_ContentfulAPI} from "@/Contentful/contentfulAPI";
 import IBlogData from "@/Interfaces";
-import styles from './page.module.css'
+import styles from '../../blogPage.module.css'
 import {archivo, clashDisplay} from "@/Utils/fonts/fonts";
 import Image from "next/image";
 const Page = async({ params }: { params: { id: string } }) => {
