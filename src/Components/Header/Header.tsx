@@ -2,6 +2,7 @@
 import styles from './header.module.css'
 import Image from "next/image";
 import {archivo, clashDisplay} from "@/Utils/fonts/fonts";
+import EmptyList from "@/app/(EmptyList)/EmptyList";
 
 interface HeaderProps {
   blog_id:string
@@ -12,6 +13,7 @@ interface HeaderProps {
 }
 
 const Header = (props: HeaderProps) => {
+
   return (
     <div className={styles.header_container}>
       <div className={styles.header_image_container}>
