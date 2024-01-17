@@ -5,7 +5,6 @@ import Header from "@/Components/Header/Header";
 import BlogCard from "@/Components/Card/BlogCard";
 import Template from "@/app/Template";
 import EmptyList from "@/app/(EmptyList)/EmptyList";
-import Tag from "@/Enums";
 
 export default async function Home() {
 
@@ -15,7 +14,7 @@ export default async function Home() {
   return !blog ? <EmptyList /> : (
     <Template>
       <div className={styles.home_container}>
-        <Header blog_id={blog.blog_id} image_url={blog.blog_header_img} title={blog.blog_title} author={blog.blog_author} content={blog.blog_content} />
+        <Header blog_id={blog.blog_id} image_url={blog.blog_header_img} title={blog.blog_title} author={blog.blog_author} content={blog.blog_content} tag={blog.blog_tag} />
         <h2>More Posts...</h2>
         <div className={styles.list_container}>
           {blogs.length === 0 ? <div className={styles.emptyList}>No Posts</div> : blogs.map((blog:IBlogData) => {
