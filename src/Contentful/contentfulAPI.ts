@@ -50,16 +50,18 @@ class ContentfulAPI {
     }
   }
 
-  public async getEntries(limit: number | undefined): Promise<Array<IBlogData>> {
-    const BlogArray: Array<IBlogData> = [];
+  public async getEntries(excludedId: string): Promise<Array<IBlogData>> {
 
     const blogs = await client.getEntries({
-      limit:limit
+      limit: 4
     });
 
-    blogs.items.forEach((entry:any) => {
+    const filteredBlogs = blogs.items.filter((entry: any) => entry.sys.id !== excludedId)
+
+    return filteredBlogs.map((entry:any) => {
       const fields = entry.fields;
-      BlogArray.push({
+
+      return {
         blog_id: entry.sys.id,
         blog_header_img: imageLinkResolver(fields.headerImage.fields.file.url),
         blog_title: fields.blogTitle,
@@ -67,10 +69,8 @@ class ContentfulAPI {
         blog_posted: fields.datePosted,
         blog_tag:fields.tag,
         blog_content: documentToReactComponents(fields.content)
-      })
+      }
     })
-
-    return BlogArray;
 
   }
 
