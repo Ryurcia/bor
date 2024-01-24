@@ -5,11 +5,22 @@ import Header from "@/Components/Header/Header";
 import BlogCard from "@/Components/Card/BlogCard";
 import Template from "@/app/Template";
 import EmptyList from "@/app/(EmptyList)/EmptyList";
+import {cache} from 'react';
+
+export const revalidate = 3600
+
+const getBlogs = cache(async () => {
+  const blog: IBlogData = await _ContentfulAPI.getRecentEntry();
+  const blogs: IBlogData[] = await _ContentfulAPI.getEntries(blog.blog_id);
+  return {
+    blog,
+    blogs
+  }
+})
 
 export default async function Home() {
 
-  const blog:IBlogData = await _ContentfulAPI.getRecentEntry();
-  const blogs:IBlogData[] = await _ContentfulAPI.getEntries(blog.blog_id);
+  const {blog,blogs} = await getBlogs();
 
   return !blog ? <EmptyList /> : (
     <Template>
